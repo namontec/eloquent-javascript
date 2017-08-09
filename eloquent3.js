@@ -28,12 +28,16 @@ console.log(isEven(-1));
 
 
 // Your code here.
-function counbBs(str){
-    
+function countBs(str){
+    return countChar(str, "B");    
 }
 
-function countChar(str, chr){
-
+function countChar(string, findChar){
+    var counter=0;
+    for (var i=0; i<string.length; i++){
+        if (string.charAt(i)==findChar) counter++
+    }
+    return counter;
 }
 
 console.log(countBs("BBC"));
