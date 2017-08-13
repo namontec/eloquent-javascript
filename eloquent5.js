@@ -90,4 +90,41 @@ console.log(Math.round(average(ages)*10)/10);
 // → 31.2
 
 
+//==========================
+//Historical life expectancy
+function average(array) {
+  function plus(a, b) { return a + b; }
+  return array.reduce(plus) / array.length;
+}
+
+// Your code here.
+function getCentury(person) {
+    return {"century": Math.ceil(person.died / 100), "age":person.died-person.born}
+}
+
+function round(number, fraction=10) {
+    return Math.round(number * fraction) / fraction;
+}
+
+console.log("Historical life expectancy")
+var extractCentury = ancestry.map(getCentury);
+
+var group ={};
+for (var i=0; i<extractCentury.length; i++) {
+    if (group[extractCentury[i].century]==undefined) {
+        group[extractCentury[i].century] = [];
+    }
+    group[extractCentury[i].century].push(extractCentury[i].age);
+}   
+
+for (i in group){
+    console.log(i + ": " + round(average(group[i])));
+}
+// → 16: 43.5
+//   17: 51.2
+//   18: 52.8
+//   19: 54.8
+//   20: 84.7
+//   21: 94
+
 
