@@ -102,6 +102,17 @@ function getCentury(person) {
     return {"century": Math.ceil(person.died / 100), "age":person.died-person.born}
 }
 
+function groupBy(data, groupByName) {
+    var group={};
+    for (var i=0; i<extractCentury.length; i++) {
+        if (group[extractCentury[i][groupByName]]==undefined) {
+            group[extractCentury[i][groupByName]] = [];
+        }
+        group[extractCentury[i][groupByName]].push(extractCentury[i].age);
+    }
+    return group;
+}
+
 function round(number, fraction=10) {
     return Math.round(number * fraction) / fraction;
 }
@@ -109,16 +120,10 @@ function round(number, fraction=10) {
 console.log("Historical life expectancy")
 var extractCentury = ancestry.map(getCentury);
 
-var group ={};
-for (var i=0; i<extractCentury.length; i++) {
-    if (group[extractCentury[i].century]==undefined) {
-        group[extractCentury[i].century] = [];
-    }
-    group[extractCentury[i].century].push(extractCentury[i].age);
-}   
+var grouped = groupBy(extractCentury, "century");
 
-for (i in group){
-    console.log(i + ": " + round(average(group[i])));
+for (i in grouped){
+    console.log(i + ": " + round(average(grouped[i])));
 }
 // → 16: 43.5
 //   17: 51.2
@@ -128,3 +133,23 @@ for (i in group){
 //   21: 94
 
 
+//===================
+//Every and then some
+
+// Your code here.
+function every() {
+
+}
+
+function some() {
+
+}
+
+console.log(every([NaN, NaN, NaN], isNaN));
+// → true
+console.log(every([NaN, NaN, 4], isNaN));
+// → false
+console.log(some([NaN, 3, 4], isNaN));
+// → true
+console.log(some([2, 3, 4], isNaN));
+// → false
