@@ -70,16 +70,24 @@ ancestry.forEach(function(person) {
 
 // Your code here.
 function getMothers(person){
-    return {mother: person.mother, childborn: person.born};
+    var motherByName = byName[person.mother];
+    var motherBorn = (motherByName!=undefined) ? motherByName.born : null;
+    return {mother: person.mother, born: motherBorn , childborn: person.born};
 }
 
-var mothers = ancestry.map(getMothers);
-var ages= [];
-for (var i in mothers){
-    var motherData = byName[mothers[i].mother];
-    if (motherData != undefined) {
-        ages.push(mothers[i].childborn-motherData.born)
-    }
+function hasKnownMother(person){
+    return person.mother && person.born
 }
-console.log(average(ages));
+
+function computAges(person){
+    return person.childborn - person.born;
+}
+
+var mothers = ancestry.map(getMothers).filter(hasKnownMother);
+var ages = mothers.map(computAges)
+
+console.log(Math.round(average(ages)*10)/10);
 // → 31.2
+
+
+
