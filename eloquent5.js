@@ -137,12 +137,18 @@ for (i in grouped){
 //Every and then some
 
 // Your code here.
-function every() {
-
+function every(array, expr) {
+    for (var i=0; i<array.length; i++) {
+        if (!expr(array[i])) return false; 
+    }
+    return true;
 }
 
-function some() {
-
+function some(array, expr) {
+    for (var i=0; i<array.length; i++) {
+        if (expr(array[i])) return true;
+    }
+    return false;
 }
 
 console.log(every([NaN, NaN, NaN], isNaN));
