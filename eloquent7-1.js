@@ -134,3 +134,31 @@ console.log(drawTable(dataTable(MOUNTAINS)));
 //   ------------ ------ -------------
 //   Kilimanjaro  5895   Tanzania
 //   … etcetera
+
+
+
+
+// Your code here.
+function StretchCell(inner, width, height) {
+  this.inner = inner;
+  this.widht = width;
+  this.height = height;
+}
+StretchCell.prototype.minHeight = function() {
+  return Math.max(this.inner.minHeight(), this.height);
+}
+StretchCell.prototype.minWidth = function() {
+  return Math.max(this.inner.minWidth(), this.widht);
+}
+StretchCell.prototype.draw = function (width, height) {
+  return this.inner.draw(width, height);
+}
+
+
+var sc = new StretchCell(new TextCell("abc"), 1, 2);
+console.log(sc.minWidth());
+// → 3
+console.log(sc.minHeight());
+// → 2
+console.log(sc.draw(3, 2));
+// → ["abc", "   "]
