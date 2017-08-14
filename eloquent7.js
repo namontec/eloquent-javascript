@@ -33,3 +33,34 @@ console.log(new Vector(3, 4).length);
 // → 5
 
 
+
+//==================
+//Sequence interface
+//==================
+
+// Your code here.
+
+
+
+
+function ArraySeq(array) {
+  
+}
+
+function RangeSeq(n, m) {
+
+}
+
+function logFive(squence) {
+
+}
+
+logFive(new ArraySeq([1, 2]));
+// → 1
+// → 2
+logFive(new RangeSeq(100, 1000));
+// → 100
+// → 101
+// → 102
+// → 103
+// → 104
