@@ -1,46 +1,28 @@
-function min(x1, x2){
-    if (x1<x2) return x1
-    else if (x1>x2) return x2
-    else if (x1==x2) return "equal"
+var cross=""
+for (var i=0; i<7; i++)
+{
+    cross +="#";
+    console.log(cross);
 }
 
-console.log(min(0, 10));
-// → 0
-console.log(min(0, -10));
-// → -10
-
-
-// Your code here.
-function isEven(num){
-    if (num<0) num=-num;
-	if (num==0) return true
-    else if (num==1) return false;
-    return (isEven(num-2));
+for (var i=1; i<=100; i++)
+{
+    var out = String(i);
+    //if (i%3==0) out="Fizz"
+    //else if (i%5==0) out="Buzz"
+    if (i%3==0 || i%5==0) out="FizzBuzz"
+    console.log(out);
 }
 
-console.log(isEven(50));
-// → true
-console.log(isEven(75));
-// → false
-console.log(isEven(-1));
-// → ??
-
-
-
-// Your code here.
-function countBs(str){
-    return countChar(str, "B");    
-}
-
-function countChar(string, findChar){
-    var counter=0;
-    for (var i=0; i<string.length; i++){
-        if (string.charAt(i)==findChar) counter++
+var checkBoard = function(width, height){
+    for (var h=0; h<height; h++){
+        if (h%2 ==0) var line=""
+            else var line=" ";
+        for (var w=0; w<height; w++){
+            line += "# ";
+        }
+        console.log(line);
     }
-    return counter;
 }
 
-console.log(countBs("BBC"));
-// → 2
-console.log(countChar("kakkerlak", "k"));
-// → 4
+checkBoard(15,18);
