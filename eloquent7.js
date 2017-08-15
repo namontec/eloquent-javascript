@@ -40,8 +40,23 @@ console.log(new Vector(3, 4).length);
 
 // Your code here.
 
-
-
+function Sequence(array) {
+  this.array = array.map(function(a){return a})
+  this.index = 0;
+}
+Sequence.prototype.current = function() {
+  return this.array[this.index];
+}
+Sequence.prototype.next = function() {
+  if (this.isFinished) return null;
+  this.index++;
+  return this.current();
+}
+Object.defineProperty(Sequence.prototype, "isFinished", {
+  get: function() {
+    return (this.index == this.array.length-1);
+  } 
+})
 
 function ArraySeq(array) {
   
@@ -54,6 +69,12 @@ function RangeSeq(n, m) {
 function logFive(squence) {
 
 }
+
+
+var a = new Sequence([3, "d", 33, [3,3]]);
+
+console.log(a.current(), a.next(), a.next(), a.next(), a.next());
+console.log(a.isFinished);
 
 logFive(new ArraySeq([1, 2]));
 // → 1
