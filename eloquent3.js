@@ -8,9 +8,11 @@ for (var i=0; i<7; i++)
 for (var i=1; i<=100; i++)
 {
     var out = String(i);
-    //if (i%3==0) out="Fizz"
-    //else if (i%5==0) out="Buzz"
-    if (i%3==0 || i%5==0) out="FizzBuzz"
+
+    if (i%3==0 && i%5==0) out="FizzBuzz"
+    else 
+        if (i%3==0) out="Fizz"
+        else if (i%5==0) out="Buzz"
     console.log(out);
 }
 
