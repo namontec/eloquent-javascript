@@ -1,6 +1,6 @@
 //Exercises
 
-
+//=============
 //A vector type
 //=============
 
@@ -30,51 +30,62 @@ console.log(new Vector(1, 2).plus(new Vector(2, 3)));
 console.log(new Vector(1, 2).minus(new Vector(2, 3)));
 // → Vector{x: -1, y: -1}
 console.log(new Vector(3, 4).length);
-// → 5
-
 
 
 //==================
 //Sequence interface
 //==================
 
-// Your code here.
-
-function Sequence(array) {
-  this.array = array.map(function(a){return a})
-  this.index = 0;
-}
-Sequence.prototype.current = function() {
-  return this.array[this.index];
-}
-Sequence.prototype.next = function() {
-  if (this.isFinished) return null;
-  this.index++;
-  return this.current();
+class Sequence {
+    constructor(array) {
+        this.array = array.map(function(a) { return a; });
+        this.index = 0;
+    }
+    current() {
+        return this.array[this.index];
+    }
+    next() {
+        if (this.isFinished)
+            return null;
+        this.index++;
+        return this.current();
+    }
+    resetIndex() {
+        this.index = 0;
+    }
 }
 Object.defineProperty(Sequence.prototype, "isFinished", {
   get: function() {
-    return (this.index == this.array.length-1);
+    return (this.index >= this.array.length);
   } 
 })
 
 function ArraySeq(array) {
-  
+  this.sequence = new Sequence(array);
+  return this.sequence;
 }
 
 function RangeSeq(n, m) {
+  var newArray = [];
+  for (var i = n; i<=m; i++) {
+    newArray.push(i);
+  }
+  this.sequence = new Sequence(newArray);
+  return this.sequence;
+}
+
+function logFive(sq) {
+  for (var i = 0; i<5; i++) {
+    var outNum = sq.current();
+    if (outNum == null) return;
+    console.log(outNum);
+    sq.next();
+  }
 
 }
 
-function logFive(squence) {
 
-}
-
-
-var a = new Sequence([3, "d", 33, [3,3]]);
-
-console.log(a.current(), a.next(), a.next(), a.next(), a.next());
-console.log(a.isFinished);
+console.log("\nSequence interface");
 
 logFive(new ArraySeq([1, 2]));
 // → 1
