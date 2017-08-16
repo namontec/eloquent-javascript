@@ -1,6 +1,8 @@
-function MyArray() { }
-MyArray.prototype = [];
+function User() { }
+User.prototype = { admin: false };
 
-var arr = new MyArray();
-arr.push(1, 2, 3);
-console.log(arr.length);
+var user = new User();
+
+User.prototype = { admin: true };
+
+console.log(user.admin);
