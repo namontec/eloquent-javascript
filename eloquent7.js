@@ -61,14 +61,12 @@ Object.defineProperty(Sequence.prototype, "isFinished", {
   } 
 })
 
-/*function ArraySeq(array) {
-  this.sequence = new Sequence(array);
-  return this.sequence;
-}*/
+
 function ArraySeq(array) {
   Sequence.call(this, array);  
 }
 ArraySeq.prototype = Object.create(Sequence.prototype);
+
 
 function RangeSeq(n, m) {
   var newArray = [];
@@ -78,6 +76,7 @@ function RangeSeq(n, m) {
   Sequence.call(this, newArray);
 }
 RangeSeq.prototype = Object.create(Sequence.prototype);
+
 
 function logFive(sq) {
   for (var i = 0; i<5; i++) {

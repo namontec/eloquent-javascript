@@ -48,7 +48,7 @@ var ancestry = [
 var arrays = [[1, 2, 3], [4, 5], [6]];
 // Your code here.
 var newArray = arrays.reduce(function(a, b) {
-    return a.concat(b);
+	return a.concat(b);
 });
 
 console.log(newArray);
@@ -70,17 +70,17 @@ ancestry.forEach(function(person) {
 
 // Your code here.
 function getMothers(person){
-    var motherByName = byName[person.mother];
-    var motherBorn = (motherByName!=undefined) ? motherByName.born : null;
-    return {mother: person.mother, born: motherBorn , childborn: person.born};
+  var motherByName = byName[person.mother];
+  var motherBorn = (motherByName!=undefined) ? motherByName.born : null;
+  return {mother: person.mother, born: motherBorn , childborn: person.born};
 }
 
 function hasKnownMother(person){
-    return person.mother && person.born
+	return person.mother && person.born
 }
 
 function computAges(person){
-    return person.childborn - person.born;
+  return person.childborn - person.born;
 }
 
 var mothers = ancestry.map(getMothers).filter(hasKnownMother);
@@ -99,22 +99,22 @@ function average(array) {
 
 // Your code here.
 function getCentury(person) {
-    return {"century": Math.ceil(person.died / 100), "age":person.died-person.born}
+  return {"century": Math.ceil(person.died / 100), "age":person.died-person.born}
 }
 
 function groupBy(data, groupByName) {
-    var group={};
-    for (var i=0; i<extractCentury.length; i++) {
-        if (group[extractCentury[i][groupByName]]==undefined) {
-            group[extractCentury[i][groupByName]] = [];
-        }
-        group[extractCentury[i][groupByName]].push(extractCentury[i].age);
-    }
-    return group;
+	var group = {};
+	for (var i = 0; i < extractCentury.length; i++) {
+		if (group[extractCentury[i][groupByName]] == undefined) {
+			group[extractCentury[i][groupByName]] = [];
+		}
+		group[extractCentury[i][groupByName]].push(extractCentury[i].age);
+	}
+	return group;
 }
 
 function round(number, fraction=10) {
-    return Math.round(number * fraction) / fraction;
+  return Math.round(number * fraction) / fraction;
 }
 
 console.log("Historical life expectancy")
@@ -123,7 +123,7 @@ var extractCentury = ancestry.map(getCentury);
 var grouped = groupBy(extractCentury, "century");
 
 for (i in grouped){
-    console.log(i + ": " + round(average(grouped[i])));
+  console.log(i + ": " + round(average(grouped[i])));
 }
 // → 16: 43.5
 //   17: 51.2
@@ -138,17 +138,17 @@ for (i in grouped){
 
 // Your code here.
 function every(array, expr) {
-    for (var i=0; i<array.length; i++) {
-        if (!expr(array[i])) return false; 
-    }
-    return true;
+	for (var i = 0; i < array.length; i++) {
+		if (!expr(array[i])) return false;
+	}
+	return true;
 }
 
 function some(array, expr) {
-    for (var i=0; i<array.length; i++) {
-        if (expr(array[i])) return true;
-    }
-    return false;
+	for (var i = 0; i < array.length; i++) {
+		if (expr(array[i])) return true;
+	}
+	return false;
 }
 
 console.log(every([NaN, NaN, NaN], isNaN));
