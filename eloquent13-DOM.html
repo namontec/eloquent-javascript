@@ -89,8 +89,6 @@
   function buildTable(data) {
     // Your code here.
     var newTable = document.createElement("table");
-    var newRow = document.createElement("tr");
-    var newHeader = document.createElement("tr");
 
     var ancestryKeys = Object.keys(ancestry[0]);
     newTable.appendChild(buildRow("th", ancestryKeys));
