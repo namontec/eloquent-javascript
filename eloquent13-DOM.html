@@ -2,7 +2,7 @@
 
 //Build a table
 <body>
-<table>
+  <table>
     <tr>
       <th>name</th>
       <th>height</th>
@@ -65,14 +65,14 @@
   {"name": "Jacobus Bernardus van Brussel", "sex": "m", "born": 1736, "died": 1809, "father": "Jan van Brussel", "mother": "Elisabeth Haverbeke"}
   ]
 
-    function createElementWithText(element, text) {
-      var element = document.createElement(element);
-      if (text) {
-        var textNode = document.createTextNode(text);
-        element.appendChild(textNode);
-      }
-      return element;
+  function createElementWithText(element, text) {
+    var element = document.createElement(element);
+    if (text) {
+      var textNode = document.createTextNode(text);
+      element.appendChild(textNode);
     }
+    return element;
+  }
 
   function buildRow(columnType, inArray) {
     var newRow = document.createElement("tr");
